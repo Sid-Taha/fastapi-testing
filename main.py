@@ -5,6 +5,11 @@ app = FastAPI()
 
 names = ["Taha", "Ahmed"]
 
+# ---------------------------------------------------------------Request Validation
+# Create a Pydantic model for request body
+class NameRequest(BaseModel):
+    data: str
+
 # ---------------------------------------------------------------GET
 @app.get("/")
 def get_data():
@@ -13,8 +18,8 @@ def get_data():
 
 # ---------------------------------------------------------------POST
 @app.post("/post")
-def post_data(data: str):
-    names.append(data)
+def post_data(request: NameRequest):
+    names.append(request.data)
     return names
 
 
