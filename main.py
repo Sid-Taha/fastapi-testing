@@ -28,8 +28,8 @@ def post_data(request: NameRequest):
 
 # ---------------------------------------------------------------UPDATE
 @app.put("/post/{index}")
-def update_data(index: int, data: NameRequest):
-    names[index] = {data}
+def update_data(index: int, item: NameRequest):
+    names[index] = item.data
     return names
     
 
